@@ -1,0 +1,267 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-9b4b47eb9bf105580fb4.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						18,
+						19
+					]
+				},
+				{
+					"build" : "dt_localization__py",
+					"jsonFile" : "directory-dt_localization__py-028a70df10d738a19354.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "/home/rrr/RC/DT_localization/DT_localization_ws/build/dt_localization/dt_localization__py",
+					"targetIndexes" : 
+					[
+						5
+					]
+				},
+				{
+					"build" : "dt_localization__rs",
+					"jsonFile" : "directory-dt_localization__rs-8ee65be6154d439f0187.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "/home/rrr/RC/DT_localization/DT_localization_ws/build/dt_localization/dt_localization__rs",
+					"targetIndexes" : 
+					[
+						17
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2
+					],
+					"name" : "dt_localization",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_dt_localization_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_dt_localization_egg-b2da6a04efeb001a84ad.json",
+					"name" : "ament_cmake_python_build_dt_localization_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_copy_dt_localization::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_copy_dt_localization-44386c96c90fa0df5899.json",
+					"name" : "ament_cmake_python_copy_dt_localization",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dt35_serial_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dt35_serial_node-594cf38c743e942f0219.json",
+					"name" : "dt35_serial_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dt_localization::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dt_localization-c19e61289b95153521e2.json",
+					"name" : "dt_localization",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dt_localization__cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dt_localization__cpp-153f0f1f6bf8160edd00.json",
+					"name" : "dt_localization__cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "dt_localization__py::@60b944be2c5a0d99c018",
+					"jsonFile" : "target-dt_localization__py-b0e8dc959e43eacf90e9.json",
+					"name" : "dt_localization__py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dt_localization__rosidl_generator_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dt_localization__rosidl_generator_c-dba88424d3a7da90339a.json",
+					"name" : "dt_localization__rosidl_generator_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dt_localization__rosidl_generator_py::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dt_localization__rosidl_generator_py-a3d61195d2dc7a71a019.json",
+					"name" : "dt_localization__rosidl_generator_py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dt_localization__rosidl_typesupport_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dt_localization__rosidl_typesupport_c-bedad867d7ef4a65bfc8.json",
+					"name" : "dt_localization__rosidl_typesupport_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dt_localization__rosidl_typesupport_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dt_localization__rosidl_typesupport_c__pyext-ca54c5279a67d87b5cb6.json",
+					"name" : "dt_localization__rosidl_typesupport_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dt_localization__rosidl_typesupport_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dt_localization__rosidl_typesupport_cpp-b0e2404555c39db71f90.json",
+					"name" : "dt_localization__rosidl_typesupport_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dt_localization__rosidl_typesupport_fastrtps_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dt_localization__rosidl_typesupport_fastrtps_c-d9c869190dd3b1988e9f.json",
+					"name" : "dt_localization__rosidl_typesupport_fastrtps_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dt_localization__rosidl_typesupport_fastrtps_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dt_localization__rosidl_typesupport_fastrtps_c__pyext-0e9e6c91d54a5d298df7.json",
+					"name" : "dt_localization__rosidl_typesupport_fastrtps_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dt_localization__rosidl_typesupport_fastrtps_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dt_localization__rosidl_typesupport_fastrtps_cpp-abae9e89976d1f1c0f23.json",
+					"name" : "dt_localization__rosidl_typesupport_fastrtps_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dt_localization__rosidl_typesupport_introspection_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dt_localization__rosidl_typesupport_introspection_c-e21562c851acd571f852.json",
+					"name" : "dt_localization__rosidl_typesupport_introspection_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dt_localization__rosidl_typesupport_introspection_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dt_localization__rosidl_typesupport_introspection_c__pyext-507afb57e0c530d6b997.json",
+					"name" : "dt_localization__rosidl_typesupport_introspection_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dt_localization__rosidl_typesupport_introspection_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dt_localization__rosidl_typesupport_introspection_cpp-d669bdf6287fbc9d14f1.json",
+					"name" : "dt_localization__rosidl_typesupport_introspection_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "dt_localization__rs::@8ef310dcddb3e2c4f9d1",
+					"jsonFile" : "target-dt_localization__rs-f12cc20baf6862fe6900.json",
+					"name" : "dt_localization__rs",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dt_localization_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dt_localization_uninstall-29b1366e9aa5601c59d8.json",
+					"name" : "dt_localization_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-59c67347e0885dcc1312.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/rrr/RC/DT_localization/DT_localization_ws/build/dt_localization",
+		"source" : "/home/rrr/RC/DT_localization/DT_localization_ws/src/dt_localization"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

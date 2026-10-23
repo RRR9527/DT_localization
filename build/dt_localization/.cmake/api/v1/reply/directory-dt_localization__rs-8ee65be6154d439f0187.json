@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "dt_localization__rs",
+		"source" : "/home/rrr/RC/DT_localization/DT_localization_ws/build/dt_localization/dt_localization__rs"
+	}
+}

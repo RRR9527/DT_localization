@@ -1,0 +1,13 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/dt_localization__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/dt_localization/msg/detail/dt35_distances__type_support.cpp.o"
+  "CMakeFiles/dt_localization__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/dt_localization/msg/detail/dt35_distances__type_support.cpp.o.d"
+  "libdt_localization__rosidl_typesupport_introspection_cpp.pdb"
+  "libdt_localization__rosidl_typesupport_introspection_cpp.so"
+  "rosidl_typesupport_introspection_cpp/dt_localization/msg/detail/dt35_distances__rosidl_typesupport_introspection_cpp.hpp"
+  "rosidl_typesupport_introspection_cpp/dt_localization/msg/detail/dt35_distances__type_support.cpp"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/dt_localization__rosidl_typesupport_introspection_cpp.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

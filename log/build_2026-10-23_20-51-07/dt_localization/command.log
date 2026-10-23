@@ -1,0 +1,4 @@
+Invoking command in '/home/rrr/RC/DT_localization/DT_localization_ws/build/dt_localization': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/rrr/RC/DT_localization/DT_localization_ws/build/dt_localization -- -j32 -l32
+Invoked command in '/home/rrr/RC/DT_localization/DT_localization_ws/build/dt_localization' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/rrr/RC/DT_localization/DT_localization_ws/build/dt_localization -- -j32 -l32
+Invoking command in '/home/rrr/RC/DT_localization/DT_localization_ws/build/dt_localization': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/rrr/RC/DT_localization/DT_localization_ws/build/dt_localization
+Invoked command in '/home/rrr/RC/DT_localization/DT_localization_ws/build/dt_localization' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/rrr/RC/DT_localization/DT_localization_ws/build/dt_localization

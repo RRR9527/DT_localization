@@ -1,0 +1,4 @@
+source;share/dt_localization/environment/ament_prefix_path.sh
+source;share/dt_localization/environment/library_path.sh
+source;share/dt_localization/environment/path.sh
+source;share/dt_localization/environment/pythonpath.sh
