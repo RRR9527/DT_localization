@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>dt_localization</name>
+  <name>get_serial_msg</name>
   <version>0.0.0</version>
   <description>DT35/DT50 IO-Link ranging report receiver over serial.</description>
   <maintainer email="2025302032095@whu.edu.cn">rrr</maintainer>

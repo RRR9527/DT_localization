@@ -1,8 +1,0 @@
-setup.py
-dt_localization/__init__.py
-dt_localization.egg-info/PKG-INFO
-dt_localization.egg-info/SOURCES.txt
-dt_localization.egg-info/dependency_links.txt
-dt_localization.egg-info/top_level.txt
-dt_localization/msg/__init__.py
-dt_localization/msg/_dt35_distances.py

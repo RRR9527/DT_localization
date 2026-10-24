@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(dt_localization)
+project(get_serial_msg)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -16,19 +16,19 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   DEPENDENCIES std_msgs
 )
 
-add_executable(dt35_serial_node
-  src/dt35_serial_node.cpp
-  src/dt35_serial_main.cpp
+add_executable(get_serial_msg_node
+  src/get_serial_msg.cpp
+  src/get_serial_msg_main.cpp
 )
-target_include_directories(dt35_serial_node PRIVATE
+target_include_directories(get_serial_msg_node PRIVATE
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
-target_compile_features(dt35_serial_node PUBLIC cxx_std_17)
-ament_target_dependencies(dt35_serial_node rclcpp)
+target_compile_features(get_serial_msg_node PUBLIC cxx_std_17)
+ament_target_dependencies(get_serial_msg_node rclcpp)
 rosidl_get_typesupport_target(cpp_typesupport_target ${PROJECT_NAME} "rosidl_typesupport_cpp")
-target_link_libraries(dt35_serial_node "${cpp_typesupport_target}")
+target_link_libraries(get_serial_msg_node "${cpp_typesupport_target}")
 
-install(TARGETS dt35_serial_node
+install(TARGETS get_serial_msg_node
   DESTINATION lib/${PROJECT_NAME})
 install(DIRECTORY include/
   DESTINATION include)
