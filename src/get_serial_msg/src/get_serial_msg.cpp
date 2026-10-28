@@ -223,6 +223,7 @@ void GetSerialMsg::decodeByte(uint8_t byte)
 {
     // 四态状态机：帧头1 -> 帧头2 -> 8 字节 payload -> CRC 校验字节。
     // 任一字节不符合预期都会回退，从而自动与流重新同步。
+    // byte是读到的串口原始数据
     switch (state_) 
     {
         case DecodeState::kHeader1:
@@ -291,7 +292,8 @@ void GetSerialMsg::handleFrame(const std::array<uint8_t, kPayloadLen> & payload)
       {
           const uint16_t distance_mm = static_cast<uint16_t>(
               (packed >> (8U + 14U * i)) & static_cast<uint64_t>(kDistanceMaxMm));
-          latest_.distance[i] = static_cast<float>(distance_mm) * 0.001F;
+          // 发布协议原始毫米值；米制换算统一由 localization 的集中适配层完成。
+          latest_.distance[i] = static_cast<float>(distance_mm);
           latest_.valid[i] = true;
       } 
       else 
