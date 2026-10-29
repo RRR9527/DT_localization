@@ -13,6 +13,7 @@ LocalizationNode::LocalizationNode(const rclcpp::NodeOptions & options)
     channel_1_ = declare_parameter<int>("channel_1", 0);
     channel_2_ = declare_parameter<int>("channel_2", 1);
     l_ = declare_parameter<double>("l", 1.0);
+    len = declare_parameter<double>("len", 0.5);
 
     // 通道下标必须是 [0, 3] 内互不相同的两个数。
     if (channel_1_ < 0 || channel_1_ > 3 ||
@@ -65,8 +66,8 @@ void LocalizationNode::distancesCallback(const get_serial_msg::msg::Dt35Distance
     out.channel_2 = channel_2_;
     out.d1 = static_cast<float>(d1);
     out.d2 = static_cast<float>(d2);
-    // D = (d1 + d2) / 2
-    out.d = static_cast<float>((d1 + d2) / 2.0);
+    // D = (d1 + d2) / 2 + len
+    out.d = static_cast<float>((d1 + d2) / 2.0 + len);
     // yaw = atan((d1 - d2) / L)
     out.yaw = static_cast<float>(std::atan((d1 - d2) / l_));
 

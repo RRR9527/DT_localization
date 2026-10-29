@@ -31,9 +31,10 @@ private:
     rclcpp::Subscription<get_serial_msg::msg::Dt35Distances>::SharedPtr sub_;
     rclcpp::Publisher<msg::Localization>::SharedPtr pub_;
 
-    int channel_1_ = 0;   // 通道 1 在 distance[4] 中的下标（从 0 开始）
-    int channel_2_ = 1;   // 通道 2 在 distance[4] 中的下标（从 0 开始）
-    double l_ = 1.0;      // 两传感器间距 L（m），TODO：待标定
+    int channel_1_;   // 通道 1 在 distance[4] 中的下标（从 0 开始），由参数决定
+    int channel_2_;   // 通道 2 在 distance[4] 中的下标（从 0 开始），由参数决定
+    double l_;        // 两传感器间距 L（m），由参数决定
+    double len;       // 传感器距车中心的距离
 };
 
 }  // namespace localization

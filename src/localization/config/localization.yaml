@@ -1,0 +1,9 @@
+# localization_node 运行参数。
+# 修改后重新 `ros2 launch localization localization.launch.py` 即可生效。
+localization_node:
+  ros__parameters:
+    channel_1: 0            # 通道 1 在 Dt35Distances.distance 中的下标（0 起始）
+    channel_2: 2            # 通道 2 在 Dt35Distances.distance 中的下标（0 起始）
+    l: 1.0                  # 两传感器间距 L（m），TODO: 待标定
+    len: 0.5                # 传感器距车中心的距离
+    subscribe_topic: "/get_serial_msg/distances"   # 订阅的测距话题
