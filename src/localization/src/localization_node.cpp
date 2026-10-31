@@ -19,6 +19,13 @@ LocalizationNode::LocalizationNode(const rclcpp::NodeOptions & options)
     calibration_duration = 
         declare_parameter<double>("calibration_duration", 2.0);
 
+    bias_ch_1 = declare_parameter<double>("bias_ch_1", 0.0);
+    bias_ch_2 = declare_parameter<double>("bias_ch_2", 0.0);
+    bias_ch_3 = declare_parameter<double>("bias_ch_3", 0.0);
+    bias_d3_alpha = declare_parameter<double>("bias_d3_alpha", 0.0);
+    bias_yaw = declare_parameter<double>("bias_yaw", 0.0);
+    bias_Xaxis = declare_parameter<double>("bias_Xaxis", 0.0);
+
     // 通道下标必须是 [0, 3] 内互不相同的三个数。
     if 
     (
@@ -127,16 +134,26 @@ void LocalizationNode::publish(
     out.cur_d1 = static_cast<float>(d1);
     out.cur_d2 = static_cast<float>(d2);
     out.cur_d3 = static_cast<float>(d3);
-    out.ave_d1 = static_cast<float>(ave_d1);
-    out.ave_d2 = static_cast<float>(ave_d2);
-    out.ave_d3 = static_cast<float>(ave_d3);
+    out.ave_d1 = static_cast<float>(ave_d1 + bias_ch_1);
+    out.ave_d2 = static_cast<float>(ave_d2 + bias_ch_2);
+    out.ave_d3 = static_cast<float>(ave_d3 + bias_ch_3);
 
-    const double dd = ave_d1 - ave_d2;
-    const double cos_yaw = l_ / std::sqrt(l_ * l_ + dd * dd);
-    const double yaw = std::atan2(dd, l_);
+    const double dd = ave_d1 + bias_ch_1 - ave_d2 - bias_ch_2;
+    const double theta = std::atan2(dd, l_);
+    const double yaw = theta - bias_yaw;
 
-    out.d_x = static_cast<float>(((ave_d1 + ave_d2) / 2.0 + len_x) * cos_yaw);
-    out.d_y = static_cast<float>((ave_d3 + len_y) * cos_yaw);
+    out.d_x = static_cast<float>(
+        (ave_d1 + bias_ch_1 + ave_d2 + bias_ch_2) / 2.0 * std::cos(theta)+ len_x * std::cos(yaw)
+    );
+    out.d_y = static_cast<float>(
+        (ave_d3 + bias_ch_3) * std::cos(yaw + bias_d3_alpha) +
+        len_y * std::cos(yaw) + 
+        (
+            (ave_d3 + bias_ch_3) * std::sin(yaw + bias_d3_alpha) +
+            out.d_x +
+            len_y * std::sin(yaw)
+        ) * std::tan(bias_Xaxis)
+    );
     out.yaw = static_cast<float>(yaw);
 
     pub_->publish(out);

@@ -12,12 +12,12 @@ int32 channel_2
 int32 channel_3
 
 # 解算结果。
-float32 cur_d1   # 通道 channel_1 距离（m）
-float32 cur_d2   # 通道 channel_2 距离（m）
-float32 cur_d3   # 通道 channel_3 距离（m）
-float32 ave_d1   # 通道 channel_1 平均距离（m）
-float32 ave_d2   # 通道 channel_2 平均距离（m）
-float32 ave_d3   # 通道 channel_3 平均距离（m）
-float32 d_x  # d_x = ((ave_d1 + ave_d2) / 2 + len_x) * cos(yaw)，到墙面x的距离（m）
-float32 d_y  # d_y = (ave_d3 + len_y) * cos(yaw)，到墙面y的距离（m）
-float32 yaw  # yaw = atan2(ave_d1 - ave_d2, L)，相对墙面的偏航角（rad）
+float32 cur_d1   # 通道 channel_1 原始距离（m）
+float32 cur_d2   # 通道 channel_2 原始距离（m）
+float32 cur_d3   # 通道 channel_3 原始距离（m）
+float32 ave_d1   # 通道 channel_1 平均距离，已加 bias_ch_1 修正（m）
+float32 ave_d2   # 通道 channel_2 平均距离，已加 bias_ch_2 修正（m）
+float32 ave_d3   # 通道 channel_3 平均距离，已加 bias_ch_3 修正（m）
+float32 d_x  # 到墙面x的距离（m），公式见 localization_node.hpp 头注释
+float32 d_y  # 到墙面y的距离（m），公式见 localization_node.hpp 头注释
+float32 yaw  # 相对墙面的偏航角（rad），已减 bias_yaw
