@@ -8,4 +8,5 @@ localization_node:
     l: 1.0                  # 两传感器间距 L（m），TODO: 待标定
     len_x: 0.5              # x方向传感器距车中心的距离
     len_y: 0.5              # y方向传感器距车中心的距离
+    calibration_duration: 2.0                      # 测量时间 
     subscribe_topic: "/get_serial_msg/distances"   # 订阅的测距话题

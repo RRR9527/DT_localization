@@ -16,6 +16,8 @@ LocalizationNode::LocalizationNode(const rclcpp::NodeOptions & options)
     l_ = declare_parameter<double>("l", 1.0);
     len_x = declare_parameter<double>("len_x", 0.5);
     len_y = declare_parameter<double>("len_y", 0.5);
+    calibration_duration = 
+        declare_parameter<double>("calibration_duration", 2.0);
 
     // 通道下标必须是 [0, 3] 内互不相同的三个数。
     if 
@@ -38,6 +40,17 @@ LocalizationNode::LocalizationNode(const rclcpp::NodeOptions & options)
         RCLCPP_ERROR(get_logger(), "l must be positive, got %.3f", l_);
         throw std::invalid_argument("l must be positive");
     }
+
+    if (calibration_duration < 0.0)
+    {
+        calibration_duration = 0;
+    }
+
+    calibration_done = (calibration_duration <= 0.0);
+    calib_count = 0;
+    sum_d1 = 0.0;
+    sum_d2 = 0.0;
+    sum_d3 = 0.0;
 
     const std::string topic = declare_parameter<std::string>(
         "subscribe_topic", "/get_serial_msg/distances");
@@ -71,27 +84,60 @@ void LocalizationNode::distancesCallback(const get_serial_msg::msg::Dt35Distance
     const double d2 = msg->distance[channel_2_];
     const double d3 = msg->distance[channel_3_];
 
+    if (!calibration_done)
+    {    
+        const rclcpp::Time now = this->now();
+        if (calib_count == 0)
+        {
+            calib_start = now;
+        }
+
+        sum_d1 += d1;
+        sum_d2 += d2;
+        sum_d3 += d3;
+        calib_count ++;
+
+        calibration_done = (
+            now - calib_start >= 
+            rclcpp::Duration::from_seconds(calibration_duration)
+        );
+    }
+
+    double ave_d1 = (calib_count > 0) ? sum_d1 / calib_count : d1;
+    double ave_d2 = (calib_count > 0) ? sum_d2 / calib_count : d2;
+    double ave_d3 = (calib_count > 0) ? sum_d3 / calib_count : d3; 
+
+    publish(msg, ave_d1, ave_d2, ave_d3);
+}
+
+void LocalizationNode::publish(
+    const get_serial_msg::msg::Dt35Distances::SharedPtr & msg,
+    double ave_d1, double ave_d2, double ave_d3)
+{
     msg::Localization out;
+    const double d1 = msg->distance[channel_1_];
+    const double d2 = msg->distance[channel_2_];
+    const double d3 = msg->distance[channel_3_];
     out.header = msg->header;
-    // 透传全部 4 个通道的原始数据，剩下1个通道留作以后扩展使用。
     out.distance = msg->distance;
     out.valid = msg->valid;
     out.channel_1 = channel_1_;
     out.channel_2 = channel_2_;
     out.channel_3 = channel_3_;
-    out.d1 = static_cast<float>(d1);
-    out.d2 = static_cast<float>(d2);
-    out.d3 = static_cast<float>(d3);
-    // d_x = (d1 + d2) / 2 + len_x
-    out.d_x = static_cast<float>((d1 + d2) / 2.0 + len_x);
-    // d_y = \frac{d_3 l}{\sqrt{l^2 + (d_1 - d_2)^2}} + len_y
-    out.d_y = static_cast<float>(
-        (d3 * l_) / std::sqrt(
-            (l_ * l_) + (d1 - d2) * (d1 - d2)
-        ) + len_y
-    );
-    // yaw = atan((d1 - d2) / L)
-    out.yaw = static_cast<float>(std::atan((d1 - d2) / l_));
+    out.cur_d1 = static_cast<float>(d1);
+    out.cur_d2 = static_cast<float>(d2);
+    out.cur_d3 = static_cast<float>(d3);
+    out.ave_d1 = static_cast<float>(ave_d1);
+    out.ave_d2 = static_cast<float>(ave_d2);
+    out.ave_d3 = static_cast<float>(ave_d3);
+
+    const double dd = ave_d1 - ave_d2;
+    const double cos_yaw = l_ / std::sqrt(l_ * l_ + dd * dd);
+    const double yaw = std::atan2(dd, l_);
+
+    out.d_x = static_cast<float>(((ave_d1 + ave_d2) / 2.0 + len_x) * cos_yaw);
+    out.d_y = static_cast<float>((ave_d3 + len_y) * cos_yaw);
+    out.yaw = static_cast<float>(yaw);
 
     pub_->publish(out);
 }
